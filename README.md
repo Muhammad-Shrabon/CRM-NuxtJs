@@ -6,7 +6,7 @@ Sutexzz is my first application built with Nuxt JS. I am currently learning Nuxt
 The application consists of two main parts:
 
 ### Front End:  
-This part is already completed and deployed. You can view it here: https://sutexzz.vercel.app/
+This part is already completed and deployed. You can view it here: [https://sutexzz.onrender.com/]
 
 ### Admin Panel:
 This part is currently in development. It will include:
