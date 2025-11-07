@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+    --font-inter: "Inter", serif;
+    --font-jost: "Jost", serif;
+    --font-poppin: "Poppins", sans-serif;
+ 
+    --color-main: #222b2a;
+    --color-btn: #398378;
+    --color-brdr: #b48b69;
+    --breakpoint-xs: 300px;
+    --breakpoint-xsm: 500px;
+    --color-panel-dark: #2C3930;
+    --color-panel-ddark: #212d24;
+    --color-panel-sub-dark: #3F4F44;
+    --color-panel-sub-text: #A27B5C;
+    --color-panel-text-light: #DCD7C9;
+}
+ 
+html,
+body{
+    background: linear-gradient(to bottom, #222b2a,#202222);
+    overflow-x: hidden;
+}
+
+.fture_box .item{
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+table{
+    row-gap: 20px !important;
+}
+
+td{
+    padding: 10px 0 !important;
+}
+ 
+.fture_box .item:hover:after {
+    opacity: .5;
+}
+td{
+    vertical-align: top !important;
+}
+.fture_box .item::after {
+    content: '';
+    position: absolute;
+    top: var(--y,);
+    left: var(--x,);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(#00ffb3,transparent,transparent);
+    opacity: 0.3;
+    transition: 0.5s, top 0s, left 0s;
+    pointer-events: none;
+    -webkit-transition: 0.5s, top 0s, left 0s;
+    -moz-transition: 0.5s, top 0s, left 0s;
+    -ms-transition: 0.5s, top 0s, left 0s;
+    -o-transition: 0.5s, top 0s, left 0s;
+    opacity: 0;
+    z-index: -1;
+}
+option{
+    background: #b48b69;
+}
+@layer components {
+    .icon_box{
+        @apply w-10 h-10 border border-transparent hover:border-panel-sub-text rounded-lg flex items-center justify-center bg-panel-sub-dark text-xl text-white cursor-pointer hover:text-panel-sub-text duration-300 ease-in-out
+    }
+    .input_style {
+        @apply w-full px-3 py-2 rounded-md border border-brdr/40 text-panel-text-light placeholder:text-gray-400 focus:outline-none
+    }
+    .th_style{
+        @apply !p-4 font-jost text-xs xl:text-base font-medium text-panel-text-light
+    }
+    .td_style{
+        @apply !p-4 font-poppin text-xs xl:text-sm font-normal text-panel-text-light
+    }
+    .edit{
+        @apply text-blue-400 bg-blue-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-blue-600 mr-2 cursor-pointer text-xs xl:text-sm
+    }
+    .view{
+        @apply text-green-400 bg-green-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-green-600 ml-2 cursor-pointer text-xs xl:text-sm
+    }
+    .delete{
+        @apply text-red-400 bg-red-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-red-600 cursor-pointer text-xs xl:text-sm
+    }
+    .download{
+        @apply text-orange-400 bg-orange-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-red-600 cursor-pointer text-xs xl:text-sm
+    }
+    .completed{
+        @apply text-cyan-400 bg-cyan-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-red-600 cursor-pointer text-xs xl:text-sm
+    }
+    .pending{
+        @apply text-red-400 bg-red-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-red-600 cursor-pointer text-xs xl:text-sm
+    }
+    .inprogres{ 
+        @apply text-indigo-400 bg-indigo-400/20 px-2 py-1 rounded border border-brdr/20 hover:text-red-600 cursor-pointer text-xs xl:text-sm
+    }
+}
+ 
