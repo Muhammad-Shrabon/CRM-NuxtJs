@@ -6,14 +6,14 @@
   
       <div class="participants mb-3 flex justify-between gap-3">
         <div class="participant client">
-          <img :src="clientImage" :alt="clientName + ' Avatar'" class="avatar">
+          <img :src="client?.profile || clientImage" :alt="clientName + ' Avatar'" class="avatar">
           <div class="details">
             <span class="font-jost text-xs md:text-sm font-medium text-[#28A745] uppercase">Client:</span>
             <span class="font-jost text-xs md:text-base font-normal text-panel-text-light uppercase">{{ client?.fullName || 'Loading...'  }}</span>
           </div>
         </div>
         <div class="participant freelancer">
-          <img :src="freelancerImage" :alt="freelancerName + ' Avatar'" class="avatar">
+          <img :src="freelancer?.profile || freelancerImage" :alt="freelancerName + ' Avatar'" class="avatar">
           <div class="details">
             <span class="font-jost text-xs md:text-sm font-medium text-[#28A745] uppercase">Freelancer:</span>
             <span class="font-jost text-xs md:text-base font-normal text-panel-text-light uppercase">{{ freelancer?.fullName || 'Loading...' }}</span>
@@ -105,8 +105,9 @@ const props = defineProps({
   clientUsername: { type: String, required: false }
 });
  
-
 const { client, freelancer, loading, error, fetchUsers } = useUsers()
+// const freelancerData = ref('');
+// const clientData = ref('');
 watch(
   () => [props.clientName, props.freelancerName],
   ([clientName, freelancerName]) => {
@@ -118,8 +119,7 @@ watch(
     }
   },
   { immediate: true } 
-)
- 
+) 
 const formattedStartDate = computed(() => {
   if (!props.startDate) return 'N/A';
   const date = new Date(props.startDate);

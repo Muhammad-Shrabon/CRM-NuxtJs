@@ -4,16 +4,17 @@ import User from "~/server/models/User";
 import { readBody } from 'h3';  
 import Task from "~/server/models/Task"; 
 import Milestone from "~/server/models/Milestone"; 
+import TeamMember from "~/server/models/TeamMember";
 
 export default defineEventHandler(async (event) => {
   await connectDB();
 
   const { modelName, id } = event.context.params;
-  const models = { User, Project, Task, Milestone };
+  const models = { User, Project, Task, Milestone, TeamMember };
   const model = models[modelName];
 
   const req = event.req.method;
-
+  
   if (!model) {
     return { error: `Model '${modelName}' not found` };
   }

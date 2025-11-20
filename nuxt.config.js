@@ -36,10 +36,11 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-03-16',
-  modules: ['nuxt-swiper', '@vueuse/motion/nuxt', 'v-gsap-nuxt', 'nuxt-mongoose'],
+  modules: ['nuxt-swiper', '@vueuse/motion/nuxt', 'v-gsap-nuxt', 'nuxt-mongoose',"nuxt-file-storage"], 
   plugins: ['~/plugins/pinia.js', '~/plugins/chart.js','~/plugins/sweetalert.client.js',],
-
- 
+ fileStorage: {
+    dir: "uploads",  // auto-create folder
+  },
   server: {
     port: process.env.PORT || 4000,  
     host: '0.0.0.0'

@@ -59,7 +59,7 @@ async function saveChanges() {
   })   
 
   try {
-    const res = await $fetch(`/api/User/${props.userId}`, {
+    const res = await $fetch(`/api/query/User/${props.userId}`, {
       method: 'PUT',
       body: {
         [props.field]: editedValue.value,

@@ -7,7 +7,7 @@
        <Menus/>
        <!-- Task Added Form -->
        <div class="col-span-12 xl:col-span-5">
-         <ProjectUpload/>
+         <ProjectUpload :user="user" :projectID="projectId"/>
          <!-- <Upload/> -->
        </div>
        <!-- Task Board -->

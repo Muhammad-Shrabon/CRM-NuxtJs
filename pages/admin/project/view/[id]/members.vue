@@ -7,7 +7,7 @@
        <Menus/>
        <!-- Task Added Form -->
        <div class="col-span-12 xl:col-span-4">
-         <AddMember/>
+         <AddMember :user="user" :projectID="projectId"/>
        </div>
        <!-- Task Board -->
        <div class="col-span-12 xl:col-span-8">
@@ -27,9 +27,7 @@ definePageMeta({
 import { ref, computed, onMounted } from 'vue';
 import Breadcrumb from '~/components/panel/Breadcrumb.vue';
 import { useAuthStore } from '~/store/auth';
-import { useRoute, useRouter } from 'vue-router';
-import AddMilestone from '../../../../../components/panel/project/AddMilestone.vue';
-import MilestoneLists from '../../../../../components/panel/project/MilestoneLists.vue';
+import { useRoute, useRouter } from 'vue-router'; 
 import AddMember from '../../../../../components/panel/project/AddMember.vue';
 import MembersList from '../../../../../components/panel/project/MembersList.vue';
 import Menus from '../../../components/panel/project/Menus.vue';
@@ -76,6 +74,7 @@ onMounted(async () => {
     loadingProjectData.value = false;
     router.back();
   }
+  console.log('user ID add Member:', user.value?._id);
 });
 
 const fetchProjectDetails = async (id) => {
@@ -109,44 +108,10 @@ const fetchProjectDetails = async (id) => {
     loadingProjectData.value = false;
   }
 };
+ 
 
-const formatDate = (dateString) => {
-  if (!dateString) return 'N/A';
-  try {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  } catch (e) {
-    return dateString; 
-  }
-};
-
-const formatCurrency = (amount, currencyCode) => {
-  if (amount === null || amount === undefined) return 'N/A';
-  try {
-    return new Intl.NumberFormat(undefined, {
-      style: 'currency',
-      currency: currencyCode || 'USD',
-      minimumFractionDigits: 0, 
-      maximumFractionDigits: 2, 
-    }).format(amount);
-  } catch (e) {
-    return `${amount} ${currencyCode || ''}`;  
-  }
-};
-
-const getStatusBadgeClass = (status) => {
-  switch (status) {
-    case 'active':
-      return 'bg-green-500/20 text-green-300';
-    case 'completed':
-      return 'bg-blue-500/20 text-blue-300';
-    case 'onhold':
-      return 'bg-yellow-500/20 text-yellow-300';
-    case 'draft':
-    default:
-      return 'bg-gray-500/20 text-gray-300';
-  }
-};
+ 
+ 
 </script>
 
 <style scoped>

@@ -6,7 +6,8 @@ const TaskSchema = new mongoose.Schema({
     endDate:{type:String,required:true},
     media:{type:String,required:false},
     requirement:{type:String,required:true},
-})
+    
+},{ timestamps: true })
 
 
 export default mongoose.models.Task || mongoose.model('Task', TaskSchema)

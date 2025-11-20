@@ -8,7 +8,7 @@ const MilestoneSchema = new mongoose.Schema({
     whoIssue:{type:String,required:true},
     whoGet:{type:String,required:true},
     status:{type:String,required:true},
-})
+},{ timestamps: true })
 
 
 export default mongoose.models.Milestone || mongoose.model('Milestone', MilestoneSchema)
